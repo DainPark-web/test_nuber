@@ -1,10 +1,12 @@
 import { Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import { PodcastsService } from './podcasts.service';
 
 @Controller('podcasts')
 export class PodcastsController {
+  constructor(private readonly podcastService: PodcastsService) {}
   @Get()
   getPodcasts() {
-    return 'Hi';
+    return this.podcastService.getAll();
   }
 
   @Post()
