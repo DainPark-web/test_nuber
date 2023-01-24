@@ -25,15 +25,15 @@ export class PodcastsController {
 
   @Get('/:id')
   getPodcast(@Param('id') podId: string) {
-    return `${podId} podcast`;
+    return this.podcastService.getPodcast(podId);
   }
 
   @Patch('/:id')
-  patchPodcast(@Param('id') podId: string) {
-    return `${podId} podcast patch`;
+  patchPodcast(@Param('id') podId: string, @Body() updateData) {
+    return this.podcastService.updatePodcast(podId, updateData);
   }
   @Delete('/:id')
   deletePodcast(@Param('id') podId: string) {
-    return `${podId} podcast delete`;
+    return this.podcastService.deletePodcast(podId);
   }
 }
