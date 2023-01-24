@@ -3,8 +3,16 @@ import { Podcast } from './entities/podcast.entity';
 
 @Injectable()
 export class PodcastsService {
-  private podcasts: Podcast[] = [];
+  private podcasts: Podcast[] = []; //just for now
   getAll(): Podcast[] {
-    return [];
+    return this.podcasts;
+  }
+
+  createPodCast(podcastData: Podcast) {
+    this.podcasts.push(podcastData);
+    console.log(this.podcasts);
+    return {
+      ok: true,
+    };
   }
 }

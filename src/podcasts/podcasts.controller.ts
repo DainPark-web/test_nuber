@@ -1,4 +1,13 @@
-import { Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+} from '@nestjs/common';
+import { Podcast } from './entities/podcast.entity';
 import { PodcastsService } from './podcasts.service';
 
 @Controller('podcasts')
@@ -10,8 +19,8 @@ export class PodcastsController {
   }
 
   @Post()
-  postPodcasts() {
-    return 'Post';
+  postPodcasts(@Body() podcastData) {
+    return this.podcastService.createPodCast(podcastData);
   }
 
   @Get('/:id')
